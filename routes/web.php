@@ -6,9 +6,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+
+Route::get('/', [ProductController::class, 'index'])->name('products.index');
 
 Auth::routes();
 

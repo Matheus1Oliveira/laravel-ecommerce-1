@@ -11,6 +11,7 @@ class ProductFactory extends Factory
         return [
             'model' => $this->faker->words(3, true),
             'marca' => $this->faker->words(3, true),
+
             'description' => $this->faker->paragraph,
             'price' => $this->faker->randomFloat(2, 10, 1000),
             'image' => $this->faker->imageUrl(400, 300, 'products', true),

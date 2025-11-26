@@ -1,59 +1,143 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# laravel-ecommerce
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Repositório adaptado por `Peixoot` a partir do tutorial "Laravel 12 Simple E-commerce Application" (tema: motos).
 
-## About Laravel
+> **Resumo:** projeto Laravel pronto para rodar localmente. Este README traz os passos mínimos para configurar o projeto após clonar — comandos, dependências e dicas de resolução de problemas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Pré-requisitos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* PHP 8.1+ (ou versão compatível com Laravel 12)
+* Composer
+* Node.js + npm
+* MySQL ou outro banco suportado (e criar database)
+* Git
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Passos rápidos (comandos que você deve executar assim que clonar)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+> Execute estes comandos na raiz do repositório, em um terminal.
 
-## Laravel Sponsors
+1. Clonar o repositório
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+git clone https://github.com/Peixoot/laravel-ecommerce.git
+cd laravel-ecommerce
+```
 
-### Premium Partners
+2. Instalar dependências PHP
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```bash
+# se você NÃO possui a pasta vendor (gitignore), rode:
+composer install
+```
 
-## Contributing
+3. Copiar arquivo de ambiente e gerar APP_KEY
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Code of Conduct
+4. Configurar `.env`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* Edite `.env` e configure as variáveis do banco de dados (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`) e `APP_URL` se necessário.
 
-## Security Vulnerabilities
+5. Instalar dependências de front-end
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+npm install
+# e compilar assets (modo dev):
+npm run dev
+# ou para produção:
+npm run build
+```
 
-## License
+6. Migrar banco e popular (se houver seeders)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan migrate
+# se houver seeders:
+php artisan db:seed
+```
+
+7. Linkar storage (para imagens públicas)
+
+```bash
+php artisan storage:link
+```
+
+8. Permissões (Linux/Mac) — caso ocorra erro de escrita
+
+```bash
+sudo chown -R $USER:www-data storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache
+```
+
+9. Rodar servidor local
+
+```bash
+php artisan serve
+# acessa em http://127.0.0.1:8000
+```
+
+---
+
+## Comandos úteis para desenvolvimento / troubleshooting
+
+* Limpar caches:
+
+```bash
+php artisan route:clear
+php artisan config:clear
+php artisan cache:clear
+php artisan view:clear
+php artisan optimize:clear
+```
+
+* Regenerar autoload/composer dump:
+
+```bash
+composer dump-autoload
+```
+
+* Se aparecer `403` ou imagens não carregarem:
+
+  * Certifique-se que `storage:link` foi executado e que o diretório `storage/app/public` contém as imagens.
+  * Verifique permissões de `storage` e `bootstrap/cache`.
+
+---
+
+## Como definir sua página inicial (root) — visão geral
+
+A rota raiz (`/`) é definida em `routes/web.php`. Se o `php artisan serve` abrir a `welcome.blade.php` e você quer que abra outra view (por exemplo `products.index` ou uma página `home` sua), altere a rota raiz para apontar para sua controller ou view.
+
+Exemplos e instruções mais detalhadas estão disponíveis nesta documentação do repositório.
+
+---
+
+## Estrutura importante (onde procurar o que editar)
+
+* `routes/web.php` — rotas públicas (onde está a rota `/`)
+* `app/Http/Controllers` — controllers (ex.: HomeController, ProductController)
+* `resources/views` — views Blade (a `welcome.blade.php` está aqui)
+* `public` — arquivos públicos (assets)
+
+---
+
+## Observações
+
+* `vendor/` e `node_modules/` geralmente estão no `.gitignore` — por isso o `composer install` e `npm install` são necessários após clonar.
+* Se você usa outro SGBD, ajuste o `.env` e os drivers conforme necessário.
+
+---
+
+## Licença
+
+MIT
+
+---
+
+Se quiser, eu atualizo esse README direto no repositório (push) ou adapto para um README em inglês ou com mais detalhes sobre deployment (Heroku, Docker, etc.).

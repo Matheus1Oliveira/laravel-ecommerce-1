@@ -3,10 +3,10 @@
 @section('content')
 <div class="row">
     <div class="col-md-6">
-        <img src="{{ $product->image ?? 'https://via.placeholder.com/400x300' }}" class="img-fluid" alt="{{ $product->name }}">
+        <img src="{{ $product->image ? Storage::url('products/' . $product->image) : 'https://via.placeholder.com/400x300' }}" class="img-fluid img-product-detail" alt="{{ $product->name }}">
     </div>
     <div class="col-md-6">
-        <h1>{{ $product->name }}</h1>
+        <h1>{{ $product->model }}</h1>
         <p class="h3 text-primary">${{ number_format($product->price, 2) }}</p>
         <p>{{ $product->description }}</p>
         

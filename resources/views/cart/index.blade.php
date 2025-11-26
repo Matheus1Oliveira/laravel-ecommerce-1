@@ -24,14 +24,15 @@
                 @foreach($cartItems as $item)
                 <tr>
                     <td>
-                        <img src="{{ $item['image'] ?? 'https://via.placeholder.com/50' }}" width="50" class="me-2">
+                        <img src="{{ $item['image'] ? Storage::url('products/' . $item['image']) : 'https://via.placeholder.com/50' }}" width="50" height="50" class="me-2 img-product-cart">
                         {{ $item['model'] }}
                     </td>
                     <td>${{ number_format($item['price'], 2) }}</td>
                     <td>
-                        <form action="{{ route('cart.update', $item['product_id']) }}" method="POST" class="d-inline">
+                        <form action="{{ route('cart.update', $item['product_id']) }}" method="POST" class="d-flex gap-2">
                             @csrf
-                            <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="1" class="form-control d-inline" style="width: 70px;">
+                            <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="1" class="form-control" style="width: 70px;">
+                            <button type="submit" class="btn btn-sm btn-primary">Update</button>
                         </form>
                     </td>
                     <td>${{ number_format($item['price'] * $item['quantity'], 2) }}</td>

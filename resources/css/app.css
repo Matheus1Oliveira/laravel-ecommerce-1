@@ -9,3 +9,20 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+@layer components {
+    /* Imagem padrão para cards de produtos */
+    .img-product-card {
+        @apply w-full h-64 object-cover object-center bg-gray-100 !important;
+    }
+
+    /* Imagem padrão para página de detalhe do produto */
+    .img-product-detail {
+        @apply w-full h-96 object-cover object-center bg-gray-100 rounded !important;
+    }
+
+    /* Imagem padrão para carrinho */
+    .img-product-cart {
+        @apply object-cover object-center bg-gray-100 !important;
+    }
+}

@@ -11,7 +11,11 @@
     @foreach($products as $product)
     <div class="col-md-4 mb-4">
         <div class="card h-100">
-            <img src="{{ $product->image ? Storage::url('products/' . $product->image) : 'https://via.placeholder.com/400x300' }}" class="card-img-top img-product-card" alt="{{ $product->name }}">
+            <img 
+                src="{{ $product->image ? asset('images/' . $product->image) : 'https://via.placeholder.com/400x300' }}" 
+                class="card-img-top img-product-card" 
+                alt="{{ $product->description }}"
+            >
             <div class="card-body">
                 <h5 class="card-title">{{ $product->model }}</h5>
                 <p class="card-text">{{ Str::limit($product->description, 100) }}</p>

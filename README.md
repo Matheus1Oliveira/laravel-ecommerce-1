@@ -137,7 +137,3 @@ Exemplos e instruções mais detalhadas estão disponíveis nesta documentação
 ## Licença
 
 MIT
-
----
-
-Se quiser, eu atualizo esse README direto no repositório (push) ou adapto para um README em inglês ou com mais detalhes sobre deployment (Heroku, Docker, etc.).

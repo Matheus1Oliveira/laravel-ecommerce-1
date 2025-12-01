@@ -16,11 +16,12 @@ return new class extends Migration
 
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->text('description');
-            $table->integer('quantity');
-            $table->decimal('price', 8, 2);
+            $table->text('modelo');
+            $table->text('marca');
+            $table->integer('faixaetaria');
             $table->timestamps();
             $table->string('image')->nullable();
+            $table->decimal('price', 8, 2);
         });
     }
 

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row mb-4">
     <div class="col-12">
-        <h1>Our Products</h1>
+        <h1>Brinquedos</h1>
     </div>
 </div>
 
@@ -17,17 +17,25 @@
                 alt="{{ $product->description }}"
             >
             <div class="card-body">
-                <h5 class="card-title">{{ $product->model }}</h5>
-                <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
+                <h5 class="card-title">{{ $product->modelo }}</h5>
+                <p class="card-text">{{ Str::limit($product->marca, 100) }}</p>
                 <p class="h5">${{ number_format($product->price, 2) }}</p>
             </div>
             <div class="card-footer bg-white">
-                <a href="{{ route('products.show', $product) }}" class="btn btn-primary">View Details</a>
-                <form action="{{ route('cart.add', $product) }}" method="POST" class="d-inline">
-                    @csrf
-                    <button type="submit" class="btn btn-success">Add to Cart</button>
-                </form>
-            </div>
+    <a href="{{ route('products.show', $product) }}" class="btn btn-primary">Ver detalhes</a>
+
+    @auth
+        <form action="{{ route('cart.add', $product) }}" method="POST" class="d-inline">
+            @csrf
+            <button type="submit" class="btn btn-success">Adicionar ao carrinho</button>
+        </form>
+    @endauth
+
+    @guest
+        <a href="{{ route('login') }}" class="btn btn-outline-secondary">Login para comprar</a>
+    @endguest
+</div>
+
         </div>
     </div>
     @endforeach

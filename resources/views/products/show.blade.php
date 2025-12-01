@@ -8,7 +8,7 @@
     <div class="col-md-6">
         <h1>{{ $product->model }}</h1>
         <p class="h3 text-primary">${{ number_format($product->price, 2) }}</p>
-        <p>{{ $product->description }}</p>
+        <p>{{ $product->marca }}</p>
         
         @if($product->category)
         <p>Category: {{ $product->category->name }}</p>
@@ -16,7 +16,7 @@
 
         <form action="{{ route('cart.add', $product) }}" method="POST" class="mt-4">
             @csrf
-            <button type="submit" class="btn btn-primary btn-lg">Add to Cart</button>
+            <button type="submit" class="btn btn-primary btn-lg">Adicionar ao carrinho</button>
         </form>
     </div>
 </div>

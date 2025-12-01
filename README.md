@@ -1,6 +1,6 @@
 # laravel-ecommerce
 
-Repositório adaptado por `Peixoot` a partir do tutorial "Laravel 12 Simple E-commerce Application" (tema: motos).
+Repositório adaptado por `Matheus1Oliveira` a partir do tutorial "Laravel 12 Simple E-commerce Application" (tema: brinquedos).
 
 > **Resumo:** projeto Laravel pronto para rodar localmente. Este README traz os passos mínimos para configurar o projeto após clonar — comandos, dependências e dicas de resolução de problemas.
 
@@ -112,7 +112,7 @@ composer dump-autoload
 
 ## Como definir sua página inicial (root) — visão geral
 
-A rota raiz (`/`) é definida em `routes/web.php`. Se o `php artisan serve` abrir a `welcome.blade.php` e você quer que abra outra view (por exemplo `products.index` ou uma página `home` sua), altere a rota raiz para apontar para sua controller ou view.
+A rota raiz (`/`) é definida em `routes/web.php`. Se o `php artisan serve` abrir a `welcome.blade.php` e você quer que abra outra view (por exemplo `brinquedos.index` ou uma página `home` sua), altere a rota raiz para apontar para sua controller ou view.
 
 Exemplos e instruções mais detalhadas estão disponíveis nesta documentação do repositório.
 

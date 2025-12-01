@@ -13,7 +13,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Products
+// Brinquedos
 Route::resource('products', ProductController::class)->only(['index', 'show']);
 
 // Cart

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row mb-4">
     <div class="col-12">
-        <h1>My Orders</h1>
+        <h1>Meus Pedidos</h1>
     </div>
 </div>
 
@@ -41,7 +41,7 @@
         {{ $orders->links() }}
         @else
         <div class="alert alert-info">
-            You haven't placed any orders yet. <a href="{{ route('products.index') }}">Browse our products</a>.
+            Você ainda não fez nenhum pedido. <a href="{{ route('products.index') }}">Buscar produtos</a>.
         </div>
         @endif
     </div>

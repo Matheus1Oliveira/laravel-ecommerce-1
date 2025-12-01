@@ -14,7 +14,7 @@ class CheckoutController extends Controller
         $cartItems = session()->get('cart', []);
         
         if (empty($cartItems)) {
-            return redirect()->route('products.index')->with('error', 'Your cart is empty!');
+            return redirect()->route('products.index')->with('error', 'Seus carrinho está vazio!');
         }
 
         $total = 0;
@@ -30,7 +30,7 @@ class CheckoutController extends Controller
         $cartItems = session()->get('cart', []);
         
         if (empty($cartItems)) {
-            return redirect()->route('products.index')->with('error', 'Your cart is empty!');
+            return redirect()->route('products.index')->with('error', 'Seu carrinho está vazio!');
         }
 
         $total = 0;

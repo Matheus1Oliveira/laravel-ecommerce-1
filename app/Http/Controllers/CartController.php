@@ -37,7 +37,7 @@ class CartController extends Controller
         }
 
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart!');
+        return redirect()->back()->with('success', 'Produto adicionado ao carrinho');
     }
 
     public function remove($productId)
@@ -49,7 +49,7 @@ class CartController extends Controller
             session()->put('cart', $cart);
         }
 
-        return redirect()->back()->with('success', 'Product removed from cart!');
+        return redirect()->back()->with('success', 'Produto removido do carrinho');
     }
 
     public function update(Request $request, $productId)
@@ -61,6 +61,6 @@ class CartController extends Controller
             session()->put('cart', $cart);
         }
 
-        return redirect()->back()->with('success', 'Cart updated!');
+        return redirect()->back()->with('success', 'Carrinho atualizado');
     }
 }

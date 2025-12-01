@@ -3,94 +3,109 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Product; // 👈 faltava isso
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        // Produtos (BRINQUEDOS)
         Product::create([
-            'description' => 'Camiseta básica preta – algodão 100%, confortável para uso diário.',
-            'quantity' => 40,
-            'price' => 39.90,
-            'image' => 'camiseta_preta.jpg'
+            'modelo' => 'Carrinho de Controle Remoto Turbo Racer',
+            'marca' => 'HotSpeed',
+            'faixaetaria' => 6,
+            'price' => 149.90,
+            'image' => 'carrinho_controle_turbo.png',
         ]);
 
         Product::create([
-            'description' => 'Camiseta branca premium – tecido leve e respirável.',
-            'quantity' => 35,
-            'price' => 49.90,
-            'image' => 'camiseta_branca.jpg'
-        ]);
-
-        Product::create([
-            'description' => 'Calça jeans masculina slim – confortável e moderna.',
-            'quantity' => 25,
-            'price' => 129.90,
-            'image' => 'calca_jeans_slim.jpg'
-        ]);
-
-        Product::create([
-            'description' => 'Calça moletom unissex – ideal para dias frios.',
-            'quantity' => 20,
-            'price' => 99.90,
-            'image' => 'calca_moletom.jpg'
-        ]);
-
-        Product::create([
-            'description' => 'Vestido floral feminino – leve e perfeito para o verão.',
-            'quantity' => 15,
+            'modelo' => 'Boneca Princesa Encantada com Acessórios',
+            'marca' => 'MagicDolls',
+            'faixaetaria' => 4,
             'price' => 89.90,
-            'image' => 'vestido_floral.jpg'
+            'image' => 'boneca_princesa.png',
         ]);
 
         Product::create([
-            'description' => 'Jaqueta jeans unissex – estilo casual e resistente.',
-            'quantity' => 10,
-            'price' => 179.90,
-            'image' => 'jaqueta_jeans.jpg'
+            'modelo' => 'Blocos de Montar – Kit Criativo 300 peças',
+            'marca' => 'BlockMaster',
+            'faixaetaria' => 5,
+            'price' => 119.90,
+            'image' => 'blocos_montar_300.png',
         ]);
 
         Product::create([
-            'description' => 'Moletom com capuz – flanelado por dentro, super confortável.',
-            'quantity' => 18,
-            'price' => 139.90,
-            'image' => 'moletom_capuz.jpg'
+            'modelo' => 'Robô Interativo com Luzes e Sons',
+            'marca' => 'TechPlay',
+            'faixaetaria' => 7,
+            'price' => 199.90,
+            'image' => 'robo_interativo.png',
         ]);
 
         Product::create([
-            'description' => 'Short de tactel – ideal para academia e atividades físicas.',
-            'quantity' => 30,
-            'price' => 49.90,
-            'image' => 'short_tactel.jpg'
-        ]);
-
-        Product::create([
-            'description' => 'Saia midi – elegante e confortável para diversas ocasiões.',
-            'quantity' => 12,
+            'modelo' => 'Jogo de Tabuleiro – Aventura na Selva',
+            'marca' => 'FunGames',
+            'faixaetaria' => 8,
             'price' => 79.90,
-            'image' => 'saia_midi.jpg'
+            'image' => 'jogo_tabuleiro_selva.png',
         ]);
 
         Product::create([
-            'description' => 'Blusa de lã – ideal para o inverno, macia e quente.',
-            'quantity' => 8,
-            'price' => 110.00,
-            'image' => 'blusa_la.jpg'
+            'modelo' => 'Kit Médico Infantil Completo 12 peças',
+            'marca' => 'PlayDoctor',
+            'faixaetaria' => 3,
+            'price' => 59.90,
+            'image' => 'kit_medico_infantil.png',
         ]);
 
-        \App\Models\User::factory()->create([
+        Product::create([
+            'modelo' => 'Pista de Carrinhos com Looping Duplo',
+            'marca' => 'HotSpeed',
+            'faixaetaria' => 6,
+            'price' => 139.90,
+            'image' => 'pista_looping_duplo.png',
+        ]);
+
+        Product::create([
+            'modelo' => 'Quebra-cabeça 200 peças – Mundo Animal',
+            'marca' => 'PuzzleKids',
+            'faixaetaria' => 5,
+            'price' => 34.90,
+            'image' => 'puzzle_mundo_animal.png',
+        ]);
+
+        Product::create([
+            'modelo' => 'Pelúcia Interativa – Ursinho Musical',
+            'marca' => 'SoftFriends',
+            'faixaetaria' => 2,
+            'price' => 69.90,
+            'image' => 'pelucia_ursinho_musical.png',
+        ]);
+
+        Product::create([
+            'modelo' => 'Super Kit de Slime – 15 cores + glitter',
+            'marca' => 'SlimeLab',
+            'faixaetaria' => 8,
+            'price' => 49.90,
+            'image' => 'kit_slime_completo.png',
+        ]);
+
+        // Usuários
+        User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',
             'password' => bcrypt('password'),
         ]);
 
-        \App\Models\User::factory()->create([
+        User::factory()->create([
             'name' => 'Usuario',
             'email' => 'user@email.com',
             'password' => bcrypt('password'),
         ]);
 
-        \App\Models\Category::factory(5)->create();
+        // Categorias
+        Category::factory(5)->create();
     }
 }

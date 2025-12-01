@@ -3,7 +3,7 @@
 @section('content')
 <div class="row mb-4">
     <div class="col-12">
-        <h1>Shopping Cart</h1>
+        <h1>Carrinho</h1>
     </div>
 </div>
 
@@ -65,7 +65,7 @@
 <div class="row">
     <div class="col-12">
         <div class="alert alert-info">
-            Your cart is empty. <a href="{{ route('products.index') }}">Browse our products</a>.
+           Seu carrinho está vazio. <a href="{{ route('products.index') }}">Busque por produtos</a>.
         </div>
     </div>
 </div>
